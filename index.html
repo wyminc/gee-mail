@@ -4,15 +4,64 @@
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+        // variable name data is set
+        var data = window.geemails;
+
+        //for loop to set data equal to the data pulled from JS and increase according to the ammount of total data (length)
+        for(var i = 0; i<data.length; i++){
+        	var name = data[i].sender;
+        	var subject = data[i].subject;
+        	var body = data[i].body;
+        	var date = data[i].date;
+
+        	//part of the for loop that sets div in page and then loads respective data into each div
+        	var nameColumn = document.createElement("div");
+        	nameColumn.className = "emailNameColumn";
+        	nameColumn.innerHTML = name;
+        	main.appendChild(nameColumn);
+
+        	var subjectColumn = document.createElement("div");
+        	subjectColumn.className = "emailSubjectColumn";
+        	subjectColumn.innerHTML = subject;
+        	nameColumn.appendChild(subjectColumn);
+
+        	var bodyColumn = document.createElement("div");
+        	bodyColumn.className = "emailBodyColumn";
+        	bodyColumn.innerHTML = body;
+        	subjectColumn.appendChild(bodyColumn);
+
+        	var dateColumn = document.createElement("div");
+        	dateColumn.className = "emailDateColumn";
+        	dateColumn.innerHTML = date;
+        	bodyColumn.appendChild(dateColumn);
+        }
+
+        //Function to display body of the email
+
+        function toggleBody(){
+        	var emailBody = document.querySelectorAll(".emailBodyColumn");
+        	if (emailBody.style.display === "block"){
+        		emailBody.style.display = "none";
+        	} else{
+        		emailBody.style.display = "block";
+        	}
+        }
+
+		bodyColumn.addEventListener("click", toggleBody)
+
       };
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
+		<div id = "menu">
+			<ul>
+				<li class = "menuItem">Inbox</li>
+				<li class = "menuItem">Sent</li>
+				<li class = "menuItem">Drafts</li>
+				<li class = "menuItem">Trash</li>		
+			</ul>
 		</div>
+
+		<div class="container" id="main"></div>
 	</body>
 </html>
