@@ -93,9 +93,12 @@
                     emailBody.style.display = "block";
                 }
             }
-        }
 
-        //Counter Update
+            //Counter Update
+            var emailCountTwo = emailCount + newData.length
+            document.getElementById("inbox").innerHTML = "Inbox" + " (" + emailCountTwo + ")"
+
+        }
 
 
         //Retrieve email every 30sec
