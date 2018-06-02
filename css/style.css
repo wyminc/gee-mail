@@ -1,2 +1,29 @@
-display: none;
-display: block;
+.emailDate{
+	font-size: 15px;
+}
+
+.emailName{
+	font-weight: bold;
+	font-size: 20px
+}
+
+.emailSubject{
+	font-style: italic;
+	font-size:20px; 
+}
+
+.emailbody{
+	display: none;
+	font-size: 15px;
+}
+
+
+.menuItem{
+	display:inline-block;
+	background-color:#d14836;
+	color: white;
+}
+
+#emailTitle{
+	font-size: 100px;
+}
