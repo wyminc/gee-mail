@@ -4,6 +4,8 @@
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
+
+
         // variable name data is set
         var data = window.geemails;
 
@@ -16,11 +18,14 @@
         	var date = data[i].date;
 
         	//part of the for loop that sets div in page and then loads respective data into each div
+            var box = document.createElement("div");
+            box.className = "container";
+            main.appendChild(box);
 
             var dateInfo = document.createElement("div");
             dateInfo.className = "emailDate";
             dateInfo.innerHTML = date;
-            main.appendChild(dateInfo);
+            box.appendChild(dateInfo);
 
         	var nameInfo = document.createElement("div");
         	nameInfo.className = "emailName";
@@ -39,6 +44,24 @@
 
         }
 
+            //Function to display body of the email
+            //Outside of the emailRetrieve function to affect the first 10 emails
+
+            var parentElem = document.getElementsByClassName("emailSubject");
+
+            for (var h = 0; h<parentElem.length; h++){
+            parentElem[h].addEventListener("click", toggleBody);
+            }
+
+            function toggleBody(){
+                var showEmail = this.querySelectorAll(".emailBody")[0];
+                if (showEmail.style.display === "block"){
+                    showEmail.style.display = "none";
+                } else{
+                    showEmail.style.display = "block";
+                }
+            }
+
         //Counter
         var emailCount = data.length;
         document.getElementById("inbox").innerHTML = "Inbox" + " (" + emailCount + ")"
@@ -55,10 +78,14 @@
             var bodyNew = newData.body;
             var dateNew = newData.date;
 
+            var boxNew = document.createElement("div");
+            boxNew.className = "container";
+            main.appendChild(boxNew);
+
             var dateInfoNew = document.createElement("div");
             dateInfoNew.className = "emailDate";
             dateInfoNew.innerHTML = dateNew;
-            main.appendChild(dateInfoNew);
+            boxNew.appendChild(dateInfoNew);
 
             var nameInfoNew = document.createElement("div");
             nameInfoNew.className = "emailName";
@@ -82,33 +109,34 @@
             var parentElem = document.getElementsByClassName("emailSubject");
 
             for (var h = 0; h<parentElem.length; h++){
-            parentElem[h].addEventListener("click", toggleBody)
+            parentElem[h].addEventListener("click", toggleBody);
             }
 
             function toggleBody(){
-                var emailBody = this.querySelectorAll(".emailBody");
-                if (emailBody.style.display === "block"){
-                    emailBody.style.display = "none";
+                var showEmail = this.querySelectorAll(".emailBody")[0];
+                if (showEmail.style.display === "block"){
+                    showEmail.style.display = "none";
                 } else{
-                    emailBody.style.display = "block";
+                    showEmail.style.display = "block";
                 }
             }
 
             //Counter Update
-            var emailCountTwo = emailCount + newData.length
-            document.getElementById("inbox").innerHTML = "Inbox" + " (" + emailCountTwo + ")"
+            emailCount++
+            document.getElementById("inbox").innerHTML = "Inbox" + " (" + emailCount + ")"
 
         }
 
 
         //Retrieve email every 30sec
         setInterval (emailRetrieve, 30000)
+
       };
     </script>
 	</head>
 	<body>
         <div>
-            <img id = "emailLogo" src = "https://www.bloc.io/learn-to-code/bc/dev-league" />
+            <img id = "emailLogo" src = "https://s3.amazonaws.com/bloc-global-assets/almanac-assets/bootcamps/logos/000/002/654/original/Dev-League.jpg?1467187318" />
             <h1 id = "emailTitle">Gee-Mail</h1>
         </div>
 		<div id = "menu">

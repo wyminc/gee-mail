@@ -1,5 +1,12 @@
+.container{
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
 .emailDate{
-	font-size: 15px;
+	font-size: 12px;
 }
 
 .emailName{
