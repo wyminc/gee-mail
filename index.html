@@ -7,6 +7,7 @@
         // variable name data is set
         var data = window.geemails;
 
+
         //for loop to set data equal to the data pulled from JS and increase according to the ammount of total data (length)
         for(var i = 0; i<data.length; i++){
         	var name = data[i].sender;
@@ -15,10 +16,16 @@
         	var date = data[i].date;
 
         	//part of the for loop that sets div in page and then loads respective data into each div
+
+            var dateInfo = document.createElement("div");
+            dateInfo.className = "emailDate";
+            dateInfo.innerHTML = date;
+            main.appendChild(dateInfo);
+
         	var nameInfo = document.createElement("div");
         	nameInfo.className = "emailName";
         	nameInfo.innerHTML = name;
-        	main.appendChild(nameInfo);
+        	dateInfo.appendChild(nameInfo);
 
         	var subjectInfo = document.createElement("div");
         	subjectInfo.className = "emailSubject";
@@ -30,27 +37,29 @@
         	bodyInfo.innerHTML = body;
         	subjectInfo.appendChild(bodyInfo);
 
-        	var dateInfo = document.createElement("div");
-        	dateInfo.className = "emailDate";
-        	dateInfo.innerHTML = date;
-        	bodyInfo.appendChild(dateInfo);
         }
 
         //Retrieve new mail data 
 
         console.log(getNewMessage())
-        var newData = getNewMessage()
-
+        
         function emailRetrieve(){
+            var newData = getNewMessage()
+
             var nameNew = newData.sender;
             var subjectNew = newData.subject;
             var bodyNew = newData.body;
             var dateNew = newData.date;
 
+            var dateInfoNew = document.createElement("div");
+            dateInfoNew.className = "emailDate";
+            dateInfoNew.innerHTML = dateNew;
+            main.appendChild(dateInfoNew);
+
             var nameInfoNew = document.createElement("div");
             nameInfoNew.className = "emailName";
             nameInfoNew.innerHTML = nameNew;
-            main.appendChild(nameInfoNew);
+            dateInfoNew.appendChild(nameInfoNew);
 
             var subjectInfoNew = document.createElement("div");
             subjectInfoNew.className = "emailSubject";
@@ -62,28 +71,28 @@
             bodyInfoNew.innerHTML = bodyNew;
             subjectInfoNew.appendChild(bodyInfoNew);
 
-            var dateInfoNew = document.createElement("div");
-            dateInfoNew.className = "emailDate";
-            dateInfoNew.innerHTML = dateNew;
-            bodyInfoNew.appendChild(dateInfoNew);
-        }
 
-        //Function to display body of the email
+            //Function to display body of the email
+            //Inside of the retrieve new data function to include it as well
 
-        var parentElem = document.getElementByClassName("emailSubject");
+            var parentElem = document.getElementsByClassName("emailSubject");
 
-        for (var h = 0; h<parentElem.length; h++) {
+            for (var h = 0; h<parentElem.length; h++){
             parentElem[h].addEventListener("click", toggleBody)
+            }
+
+            function toggleBody(){
+                var emailBody = this.querySelectorAll(".emailBody");
+                if (emailBody.style.display === "block"){
+                    emailBody.style.display = "none";
+                } else{
+                    emailBody.style.display = "block";
+                }
+            }
         }
 
-        function toggleBody(){
-        	var emailBody = this.querySelectorAll(".emailBody")[0];
-        	if (emailBody.style.display === "block"){
-        		emailBody.style.display = "none";
-        	} else{
-        		emailBody.style.display = "block";
-        	}
-        }
+        
+
 
         //Retrieve email every 30sec
         setInterval (emailRetrieve, 30000)
