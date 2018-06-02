@@ -39,6 +39,10 @@
 
         }
 
+        //Counter
+        var emailCount = data.length;
+        document.getElementById("inbox").innerHTML = "Inbox" + " (" + emailCount + ")"
+
         //Retrieve new mail data 
 
         console.log(getNewMessage())
@@ -91,8 +95,7 @@
             }
         }
 
-        
-
+    
 
         //Retrieve email every 30sec
         setInterval (emailRetrieve, 30000)
@@ -102,10 +105,10 @@
 	<body>
 		<div id = "menu">
 			<ul>
-				<li class = "menuItem">Inbox</li>
-				<li class = "menuItem">Sent</li>
-				<li class = "menuItem">Drafts</li>
-				<li class = "menuItem">Trash</li>		
+				<li class = "menuItem", id = "inbox">Inbox</li>
+				<li class = "menuItem", id = "sent">Sent</li>
+				<li class = "menuItem", id = "drafts">Drafts</li>
+				<li class = "menuItem", id = "trash">Trash</li>		
 			</ul>
 		</div>
 
