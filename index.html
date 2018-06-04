@@ -19,25 +19,30 @@
 
         	//part of the for loop that sets div in page and then loads respective data into each div
             var box = document.createElement("div");
+            box.id = "firstTenContainer";
             box.className = "container";
             main.appendChild(box);
 
             var dateInfo = document.createElement("div");
+            dateInfo.id = "fistTenDate";
             dateInfo.className = "emailDate";
             dateInfo.innerHTML = date;
             box.appendChild(dateInfo);
 
         	var nameInfo = document.createElement("div");
+            nameInfo.id = "firstTenName";
         	nameInfo.className = "emailName";
         	nameInfo.innerHTML = name;
         	dateInfo.appendChild(nameInfo);
 
         	var subjectInfo = document.createElement("div");
+            subjectInfo.id = "firstTenSubject";
         	subjectInfo.className = "emailSubject";
         	subjectInfo.innerHTML = subject;
         	nameInfo.appendChild(subjectInfo);
 
         	var bodyInfo = document.createElement("div");
+            bodyInfo.id = "firstTenBody"
         	bodyInfo.className = "emailBody";
         	bodyInfo.innerHTML = body;
         	subjectInfo.appendChild(bodyInfo);
@@ -79,29 +84,40 @@
             var dateNew = newData.date;
 
             var boxNew = document.createElement("div");
+            boxNew.id = "nextContainer";
             boxNew.className = "container";
             main.appendChild(boxNew);
 
             var dateInfoNew = document.createElement("div");
+            dateInfoNew.id = "nextDate";
             dateInfoNew.className = "emailDate";
             dateInfoNew.innerHTML = dateNew;
             boxNew.appendChild(dateInfoNew);
 
             var nameInfoNew = document.createElement("div");
+            nameInfoNew.id = "nextName";
             nameInfoNew.className = "emailName";
             nameInfoNew.innerHTML = nameNew;
             dateInfoNew.appendChild(nameInfoNew);
 
             var subjectInfoNew = document.createElement("div");
+            subjectInfoNew.id = "nextSubject";
             subjectInfoNew.className = "emailSubject";
             subjectInfoNew.innerHTML = subjectNew;
             nameInfoNew.appendChild(subjectInfoNew);
 
             var bodyInfoNew = document.createElement("div");
+            bodyInfoNew.id = "nextBody";
             bodyInfoNew.className = "emailBody";
             bodyInfoNew.innerHTML = bodyNew;
             subjectInfoNew.appendChild(bodyInfoNew);
 
+            //Changing Class Name for the first 10 email to disable toggle function (parentElem will no longer be able to grab the first 10 email cause different class)
+            document.getElementById("firstTenContainer").className = "containerChanged";
+            document.getElementById("fistTenDate").className = "emailDateChanged";
+            document.getElementById("firstTenName").className = "emailNameChanged";
+            document.getElementById("firstTenSubject").className = "emailSubjectChanged";
+            document.getElementById("firstTenBody").className = "emailBodyChanged";
 
             //Function to display body of the email
             //Inside of the retrieve new data function to include it as well
@@ -129,7 +145,7 @@
 
 
         //Retrieve email every 30sec
-        setInterval (emailRetrieve, 30000)
+        setInterval (emailRetrieve, 5000)
 
       };
     </script>
