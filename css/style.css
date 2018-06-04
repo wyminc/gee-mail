@@ -34,29 +34,3 @@
 #emailTitle{
 	font-size: 100px;
 }
-
-.containerChanged{
-  border: 1px solid black;
-  margin: 5px;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.emailDateChanged{
-	font-size: 12px;
-}
-
-.emailNameChanged{
-	font-weight: bold;
-	font-size: 20px
-}
-
-.emailSubjectChanged{
-	font-style: italic;
-	font-size:20px; 
-}
-
-.emailbodyChanged{
-	display: none;
-	font-size: 15px;
-}
